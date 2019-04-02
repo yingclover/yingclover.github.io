@@ -7,13 +7,13 @@
   
   <title>grep、sed、awk | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="grep、sed、awkgrep：查找正则表达式目标：通过查找、取出、匹配，找出符合条件的某个字符或字符串。 特定字符（单个字符） 1grep &apos;1&apos; passwd 范围内字符： 单个字符[]，从中括号里面选择一个字符。如数字字符[0-9]，[259];小写字母[a-z]；大写字母[A-Z]; 反向字符：^ 123grep &apos;[259]&apos; passwdgrep &apos;[a-zA-z]&apos; passwdg">
+  <meta name="description" content="grep：查找正则表达式目标：通过查找、取出、匹配，找出符合条件的某个字符或字符串。 特定字符（单个字符） 1grep &apos;1&apos; passwd 范围内字符： 单个字符[]，从中括号里面选择一个字符。如数字字符[0-9]，[259];小写字母[a-z]；大写字母[A-Z]; 反向字符：^ 123grep &apos;[259]&apos; passwdgrep &apos;[a-zA-z]&apos; passwdgrep &apos;[^0-9]&apos;">
 <meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="grep、sed、awk">
 <meta property="og:url" content="http://yoursite.com/2019/04/02/grep、sed、awk/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="grep、sed、awkgrep：查找正则表达式目标：通过查找、取出、匹配，找出符合条件的某个字符或字符串。 特定字符（单个字符） 1grep &apos;1&apos; passwd 范围内字符： 单个字符[]，从中括号里面选择一个字符。如数字字符[0-9]，[259];小写字母[a-z]；大写字母[A-Z]; 反向字符：^ 123grep &apos;[259]&apos; passwdgrep &apos;[a-zA-z]&apos; passwdg">
+<meta property="og:description" content="grep：查找正则表达式目标：通过查找、取出、匹配，找出符合条件的某个字符或字符串。 特定字符（单个字符） 1grep &apos;1&apos; passwd 范围内字符： 单个字符[]，从中括号里面选择一个字符。如数字字符[0-9]，[259];小写字母[a-z]；大写字母[A-Z]; 反向字符：^ 123grep &apos;[259]&apos; passwdgrep &apos;[a-zA-z]&apos; passwdgrep &apos;[^0-9]&apos;">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="c:/Users/VS-YY/AppData/Roaming/Typora/typora-user-images/1553739110472.png">
 <meta property="og:image" content="c:/Users/VS-YY/AppData/Roaming/Typora/typora-user-images/1553740488813.png">
@@ -24,10 +24,10 @@
 <meta property="og:image" content="c:/Users/VS-YY/AppData/Roaming/Typora/typora-user-images/1554025188282.png">
 <meta property="og:image" content="c:/Users/VS-YY/AppData/Roaming/Typora/typora-user-images/1554025567721.png">
 <meta property="og:image" content="c:/Users/VS-YY/AppData/Roaming/Typora/typora-user-images/1554038827247.png">
-<meta property="og:updated_time" content="2019-04-02T01:18:46.179Z">
+<meta property="og:updated_time" content="2019-04-02T01:35:25.295Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="grep、sed、awk">
-<meta name="twitter:description" content="grep、sed、awkgrep：查找正则表达式目标：通过查找、取出、匹配，找出符合条件的某个字符或字符串。 特定字符（单个字符） 1grep &apos;1&apos; passwd 范围内字符： 单个字符[]，从中括号里面选择一个字符。如数字字符[0-9]，[259];小写字母[a-z]；大写字母[A-Z]; 反向字符：^ 123grep &apos;[259]&apos; passwdgrep &apos;[a-zA-z]&apos; passwdg">
+<meta name="twitter:description" content="grep：查找正则表达式目标：通过查找、取出、匹配，找出符合条件的某个字符或字符串。 特定字符（单个字符） 1grep &apos;1&apos; passwd 范围内字符： 单个字符[]，从中括号里面选择一个字符。如数字字符[0-9]，[259];小写字母[a-z]；大写字母[A-Z]; 反向字符：^ 123grep &apos;[259]&apos; passwdgrep &apos;[a-zA-z]&apos; passwdgrep &apos;[^0-9]&apos;">
 <meta name="twitter:image" content="c:/Users/VS-YY/AppData/Roaming/Typora/typora-user-images/1553739110472.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -97,7 +97,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="grep、sed、awk"><a href="#grep、sed、awk" class="headerlink" title="grep、sed、awk"></a>grep、sed、awk</h1><h2 id="grep：查找"><a href="#grep：查找" class="headerlink" title="grep：查找"></a>grep：查找</h2><p>正则表达式目标：通过查找、取出、匹配，找出符合条件的某个字符或字符串。</p>
+        <h2 id="grep：查找"><a href="#grep：查找" class="headerlink" title="grep：查找"></a>grep：查找</h2><p>正则表达式目标：通过查找、取出、匹配，找出符合条件的某个字符或字符串。</p>
 <p><strong>特定字符</strong>（单个字符）</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep '1' passwd</span><br></pre></td></tr></table></figure>
 <p><strong>范围内字符</strong>：</p>
@@ -370,7 +370,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/02/grep、sed、awk/" data-id="cjtz40dal0004y0ua41is1osz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/02/grep、sed、awk/" data-id="cjtz42vzf00041ouav4wn206c" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
