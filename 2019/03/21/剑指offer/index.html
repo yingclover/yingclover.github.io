@@ -7,13 +7,17 @@
   
   <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="123title: &amp;apos;剑指offer&amp;apos;date: 2019-04-05 09:18:36tags: 剑指Offer [TOC] 1.2.3.数字中重复的数字在一个长度为n的数组里的所有数字都在0到n-1的范围内。 数组中某些数字是重复的，但不知道有几个数字是重复的。也不知道每个数字重复几次。请找出数组中任意一个重复的数字。 例如，如果输入长度为7的数组{2,3,1,0,2,5,">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/03/21/剑指offer/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="123title: &amp;apos;剑指offer&amp;apos;date: 2019-04-05 09:18:36tags: 剑指Offer [TOC] 1.2.3.数字中重复的数字在一个长度为n的数组里的所有数字都在0到n-1的范围内。 数组中某些数字是重复的，但不知道有几个数字是重复的。也不知道每个数字重复几次。请找出数组中任意一个重复的数字。 例如，如果输入长度为7的数组{2,3,1,0,2,5,">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-05T13:09:12.804Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="123title: &amp;apos;剑指offer&amp;apos;date: 2019-04-05 09:18:36tags: 剑指Offer [TOC] 1.2.3.数字中重复的数字在一个长度为n的数组里的所有数字都在0到n-1的范围内。 数组中某些数字是重复的，但不知道有几个数字是重复的。也不知道每个数字重复几次。请找出数组中任意一个重复的数字。 例如，如果输入长度为7的数组{2,3,1,0,2,5,">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -60,399 +64,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-grep、sed、awk" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/04/02/grep、sed、awk/" class="article-date">
-  <time datetime="2019-04-02T01:18:36.000Z" itemprop="datePublished">2019-04-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/02/grep、sed、awk/">grep、sed、awk</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="grep：查找"><a href="#grep：查找" class="headerlink" title="grep：查找"></a>grep：查找</h2><p>正则表达式目标：通过查找、取出、匹配，找出符合条件的某个字符或字符串。</p>
-<p><strong>特定字符</strong>（单个字符）</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep '1' passwd</span><br></pre></td></tr></table></figure>
-<p><strong>范围内字符</strong>：</p>
-<p>单个字符[]，从中括号里面选择一个字符。如数字字符[0-9]，[259];小写字母[a-z]；大写字母[A-Z];</p>
-<p>反向字符：^</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grep '[259]' passwd</span><br><span class="line">grep '[a-zA-z]' passwd</span><br><span class="line">grep '[^0-9]' passwd #非数字字符</span><br></pre></td></tr></table></figure>
-<p><strong>任意字符</strong>：代表任何一个字符 ‘.’。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep '.' passwd</span><br></pre></td></tr></table></figure>
-<p>注意：’[.]’和’\.’都表示匹配小数点；</p>
-<p><strong>边界字符</strong>：</p>
-<p>头字符^：^root  以root开头的那一行，注意和[^]的区别</p>
-<p>尾字符$：false$ 以false结尾的那一行</p>
-<p>空白行：^$</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">grep '^root' passwd  #以root开头的某行</span><br><span class="line">grep 'flase$' passwd #以false结尾的那一行</span><br></pre></td></tr></table></figure>
-<p><strong>元字符</strong>（代表普通字符或特殊字符）</p>
-<p>\w：匹配任何字类字符，包括下划线（[a-zA-Z0-9_]）</p>
-<p>\W：匹配任何非字类字符（[ ^a-zA-Z0-9_]）</p>
-<p>\b：代表单词的分隔</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep '\bx\b' passwd #只列出x，不列出包含x的其他单词</span><br></pre></td></tr></table></figure>
-<p><strong>字符组合：字符串</strong>：’root’ ,’100’, ‘[A-Z][a-z]’ , ‘\b[0-9][0-9]\b’ </p>
-<p>重复的表示：</p>
-<p>*：零次或多次匹配前面的字符或子表达式</p>
-<p> +：一次或多次</p>
-<p> ？：零次或一次</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">grep 'se*' test.txt #匹配s,se,see,seeeee....</span><br><span class="line">grep 'se\+' test.txt #匹配se,see,seeee...，注意这里+前面要加反斜杠\</span><br><span class="line">grep 'se\?' test.txt #匹配s,se</span><br><span class="line">grep '\(se\)\+' test.txt #匹配一个或多个se</span><br></pre></td></tr></table></figure>
-<p>重复特定次数：{n,m}，n代表最小重复次数，m代表最大重复字数。*就等价与{0，}；+就等价与{1，}；\?就等价与{0，1}；</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep '[0-9]\&#123;2,3\&#125;' test.txt #&#123;&#125;要有反斜杠，表示两个或三个数字</span><br></pre></td></tr></table></figure>
-<p>任意字符串的表示：.* ,例如：^r.*    m.*c（注意与 m..c）</p>
-<p>又如：’\bm[a-z]*c\b’ 理解</p>
-<p><img src="C:\Users\VS-YY\AppData\Roaming\Typora\typora-user-images\1553739110472.png" alt="1553739110472"></p>
-<p>逻辑的表示</p>
-<p>|：’/bin\(false\|true\)’</p>
-<ul>
-<li><p>案例一：匹配4-10位qq号(查找文件中数字独立成行出现)</p>
-</li>
-<li><p>案例二：匹配15或18位身份证号（支持带X的）</p>
-</li>
-<li><p>案例三：匹配密码（由数字，26字母和下划线组成）</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grep '^[0-9]\&#123;4,10\&#125;$' qq.txt</span><br><span class="line">grep '^[1-9]\([0-9]\&#123;13\&#125;\|[0-9]\&#123;16\&#125;\)[0-9xX]$' qq.txt</span><br><span class="line">grep '^\w\+$' qq.txt</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>正则表达式总结：</p>
-<p><img src="C:\Users\VS-YY\AppData\Roaming\Typora\typora-user-images\1553740488813.png" alt="1553740488813"></p>
-<h2 id="sed：流处理编辑器"><a href="#sed：流处理编辑器" class="headerlink" title="sed：流处理编辑器"></a>sed：流处理编辑器</h2><p>常用功能：自动处理文件、分析日志文件、修改配置文件</p>
-<ol>
-<li><p>sed是如何进行文本处理的？</p>
-</li>
-<li><p>sed的基本操作命令：文本行处理（增、删、替）  字符串替换（取用）</p>
-</li>
-<li><p>sed的高级操作命令</p>
-<p><img src="C:\Users\VS-YY\AppData\Roaming\Typora\typora-user-images\1553741262003.png" alt="1553741262003"></p>
-</li>
-</ol>
-<p>sed一次处理一行内容，不改变文件内容，除非重定向。</p>
-<p><strong>sed-格式</strong></p>
-<p>命令行格式 <code>$sed [options] [-e script]或者[-f script文件] file(s)</code></p>
-<p>options：</p>
-<table>
-<thead>
-<tr>
-<th>options</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-n</td>
-<td>只打印模式匹配的行</td>
-</tr>
-<tr>
-<td>-e</td>
-<td>直接在命令行模式上进行sed动作编辑，为默认项</td>
-</tr>
-<tr>
-<td>-f</td>
-<td>将sed的动作写在一个文件内，用–f filename 执行filename内的sed动作</td>
-</tr>
-</tbody>
-</table>
-<p>command：行定位（正则）+ sed命令（操作）</p>
-<table>
-<thead>
-<tr>
-<th>command</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>x</td>
-<td>一行</td>
-</tr>
-<tr>
-<td>x,y</td>
-<td>x到y行</td>
-</tr>
-<tr>
-<td>/pattern/</td>
-<td>包含模式的行</td>
-</tr>
-<tr>
-<td>/pattern1/，/pattern2/</td>
-<td>从模式1到模式2的行</td>
-</tr>
-<tr>
-<td>pattern/,x</td>
-<td>从模式到x行</td>
-</tr>
-<tr>
-<td>x,/pattern/</td>
-<td>从x到模式所在的第一行，若无模式，则打印到最后一行</td>
-</tr>
-<tr>
-<td>x,y!</td>
-<td>不包含x到y之间的行</td>
-</tr>
-<tr>
-<td>first~step</td>
-<td>定位间隔几行，如’1~2p’就是输出1，3，5…行</td>
-</tr>
-<tr>
-<td>p</td>
-<td>打印相关的行（注意与参数-n配合）</td>
-</tr>
-<tr>
-<td>a</td>
-<td>新增， a 的后面可以接字串，而这些字串会在新的一行出现(目前的下一行)～</td>
-</tr>
-<tr>
-<td>c</td>
-<td>取代， c 的后面可以接字串，这些字串可以取代 n1,n2 之间的行！</td>
-</tr>
-<tr>
-<td>d</td>
-<td>删除，因为是删除啊，所以 d 后面通常不接任何咚咚；</td>
-</tr>
-<tr>
-<td>i</td>
-<td>插入， i 的后面可以接字串，而这些字串会在新的一行出现(目前的上一行)；</td>
-</tr>
-<tr>
-<td>s</td>
-<td>取代，可以直接进行取代的工作哩！通常这个 s 的动作可以搭配正规表示法！例如 1,20s/old/new/g 就是啦！</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">nl passwd | sed -n <span class="string">'10p'</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash">nl passwd | sed -n <span class="string">'10,20p'</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash">nl passwd | sed -n <span class="string">'/ying/p'</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash">nl passwd | sed -n <span class="string">'/root/,5p'</span><span class="comment">#若5行之后还有root，则表示匹配含有root的行</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash">sed -e 4a\newLine testfile <span class="comment">#testfile文件的第四行后添加一行</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> nl /etc/passwd | sed <span class="string">'2,5d'</span> <span class="comment">#将 /etc/passwd 的内容列出并且列印行号，同时，请将第 2~5 行删除！</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash">nl /etc/passwd | sed <span class="string">'3,$d'</span> <span class="comment">#要删除第 3 到最后一行</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash">nl /etc/passwd | sed <span class="string">'2i drink tea'</span> <span class="comment">#在第二行前加上drink tea</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash">nl /etc/passwd | sed <span class="string">'2,5c No 2-5 number'</span> <span class="comment">#将第2-5行的内容取代成为『No 2-5 number』呢？</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash">nl /etc/passwd | sed  <span class="string">'/root/d'</span> <span class="comment">#删除/etc/passwd所有包含root的行，其他行输出</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash">sed <span class="string">'$a /    name=ying /n    age=22'</span> testfile <span class="comment">#最后一行后面加入两行，要用/n来转义，且前面都有一个制表符=4个空格</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash">sed <span class="string">'/^$/d'</span> testfile <span class="comment">#删除空行</span></span></span><br></pre></td></tr></table></figure>
-<p><strong>sed替换</strong> </p>
-<p><code>sed &#39;s/要被取代的字串/新的字串/g&#39;  g表示全局，若不加则只替换每行第一个</code></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">inet addr:192.168.1.100 Bcast:192.168.1.255 Mask:255.255.255.0</span><br><span class="line"><span class="meta">$</span><span class="bash">sed <span class="string">'s/^.*addr://g'</span></span></span><br><span class="line">192.168.1.100 Bcast:192.168.1.255 Mask:255.255.255.0</span><br><span class="line"><span class="meta">$</span><span class="bash">sed <span class="string">'s/^.*addr://g'</span> | sed <span class="string">'s/Bcast.*$//g'</span></span></span><br><span class="line">192.168.1.100</span><br></pre></td></tr></table></figure>
-<p><strong>sed {}</strong></p>
-<p>多个sed命令，用  ;  分开</p>
-<p>-n:读取下一个输入行，<code>sed -n &#39;{n;p}&#39;</code>输出偶数行</p>
-<p><strong>sed&amp;</strong></p>
-<p>替换固定字符串 <code>s/ying/ying@/g</code>等价于<code>s/ying/&amp;@/g</code></p>
-<p><strong>sed \u\l\U\L</strong></p>
-<p>\u,\l对首字母的转换，\U,\L对一定长度字母大小写的转换</p>
-<p>案例一：大小写转换</p>
-<p><code>sed &#39;s/^[a-z_-]\+/\u&amp;/&#39;passwd</code></p>
-<p>案例二：将文件名全都大写展示</p>
-<p><img src="C:\Users\VS-YY\AppData\Roaming\Typora\typora-user-images\1553841882990.png" alt="1553841882990"></p>
-<p><code>ls file[0-9].txt | sed &#39;s/^\w\+/\U&amp;/&#39;</code></p>
-<p>案例三：数据筛选，获取passwd中USER、UID、GID</p>
-<p><code>sed &#39;s/\(^[a-z_-]\+\):x:\([0-9]\+\):\([0-9]\+\):.*$/\1  \2  \3/&#39; passwd</code></p>
-<p>\1,\2,\3分别代表匹配正则中1，2，3个括号代表的字段</p>
-<p><img src="C:\Users\VS-YY\AppData\Roaming\Typora\typora-user-images\1553842544797.png" alt="1553842544797"></p>
-<p><strong>sed   \(     \)</strong></p>
-<p>替换某种（部分）字符串（\1,\2）</p>
-<p><code>s/w1\(w2\)w3/\1/ 截取w2</code>        </p>
-<p>案例：截取IP</p>
-<p>inet 192.168.83.131  netmask 255.255.255.0  broadcast 192.168.83.255  -&gt;  192.168.83.131</p>
-<p><code>ifconfig ens33 | sed -n &#39;/inet /p&#39; | sed &#39;s/[a-z]\+ \([0-9.]\+\) .*$/\1/&#39;</code></p>
-<p><img src="C:\Users\VS-YY\AppData\Roaming\Typora\typora-user-images\1554024716047.png" alt="1554024716047"></p>
-<p>r:表示取最近匹配的冒号</p>
-<p><strong>sed :r,w</strong></p>
-<p>-r：复制指定文件插入到匹配行，对文件不进行改写</p>
-<p>-w：复制匹配行拷贝到指定文件里，文件被改写</p>
-<p>源文件  互操作  目标文件</p>
-<p><img src="C:\Users\VS-YY\AppData\Roaming\Typora\typora-user-images\1554025188282.png" alt="1554025188282"></p>
-<p><strong>sed:q  退出sed</strong></p>
-<p>可以中途退出sed</p>
-<p><code>sed &#39;/sbin/q&#39;passwd</code>第一次找到sbin所在的行就退出</p>
-<p><strong>sed总结</strong></p>
-<p><img src="C:\Users\VS-YY\AppData\Roaming\Typora\typora-user-images\1554025567721.png" alt="1554025567721"></p>
-<h2 id="awk：文本处理工具"><a href="#awk：文本处理工具" class="headerlink" title="awk：文本处理工具"></a>awk：文本处理工具</h2><p>awk特点：文本与数据处理工具   可编程-&gt;处理灵活，功能强大</p>
-<p><strong>awk行处理方式与格式</strong></p>
-<p>awk一次处理一行内容，awk对每行可以切片处理</p>
-<p><code>awk &#39;{print $1}&#39;//输出首个单词</code></p>
-<p><strong>awk格式</strong>：</p>
-<ol>
-<li><p>命令行格式 <code>awk [options] &#39;command&#39; file(s)</code></p>
-<p>command组成：pattern {awk操作命令}</p>
-<ul>
-<li>pattern：正则表达式与逻辑判断式</li>
-<li>awk操作命令：内置函数print()，getline()。或者控制命令：if(){…} else{…};while(){…}</li>
-</ul>
-</li>
-<li><p>脚本格式<code>awk -f awk-script-file file(s)</code></p>
-</li>
-</ol>
-<p><strong>awk内嵌参数应用</strong></p>
-<ol>
-<li><p>awk内置变量1</p>
-<p>$0：表示整个当行</p>
-<p>$1：每行第一个字段</p>
-<p>$2：每行第二个字段</p>
-</li>
-<li><p>分隔符 -F</p>
-<p>不指定默认分隔符为空格</p>
-<p>eg:<code>awk -F &#39;:&#39; &#39;{print $3}&#39;/etc/passwd</code>将第三行以冒号分隔输出</p>
-<p>又如：<code>awk -F &#39;:&#39; &#39;{print $1 &quot; &quot; $3}&#39; passwd</code>打印用户名和UID</p>
-</li>
-<li><p>awk内置变量NR、NF、FILENAME</p>
-<p>NR：没行的记录号，即行号 <code>awk -F &#39;:&#39; &#39;{print NR}&#39; passwd</code></p>
-<p>NF：字段数量变量，即列号</p>
-<p>FILENAME:正在处理的文件名</p>
-<p>案例一：显示passwd每行的行号，每行的列数，对应行的用户名(print、printf)</p>
-<p>print方法 </p>
-<p> <code>awk -F &#39;:&#39; &#39;{print &quot;Line: &quot;NR, &quot;Clo: &quot;NF, &quot;User: &quot;$1}&#39; passwd</code>逗号表示空格</p>
-<p>printf方法</p>
-<p> <code>awk -F &#39;:&#39; &#39;{printf(&quot;Line:%s Clo:%s User:%s\n&quot;,NR,NF,$1)}&#39; passwd</code></p>
-<p>案例二：显示passwd中用户ID大于100的行号和用户名（if…else…）</p>
-<p><code>awk :%s User:%s\n&quot;,NR,NF,$1)}&#39; passwd</code></p>
-<p>案例三：在服务器log中找出‘Error’的发生日期</p>
-<p><code>sed &#39;/Error/p&#39; fresh.log | awk &#39;{print $1}&#39;</code></p>
-<p>或者 <code>awk &#39;/Error/{print $1}&#39; fresh.log</code></p>
-</li>
-</ol>
-<p><strong>awk中逻辑判断式</strong></p>
-<p>~，！~：匹配正在表达式</p>
-<p>eg：<code>awk -F &#39;:&#39; &#39;$1~/^m.*/{print $1}&#39; passwd</code>打印匹配以m开头的第一个字段</p>
-<p>==，！=，&lt;，&gt;：判断逻辑表达式</p>
-<p>eg：<code>awk -F &#39;:&#39; &#39;$3&gt;100{print $1,$3}&#39; passwd</code>输出UID大于100的用户名和UID</p>
-<p><strong>awk扩展格式</strong></p>
-<p>command扩展：<code>BEGIN{print &quot;start&quot;} pattern{commands} END{print &quot;end&quot;}</code> BEGIN和END不参与循环过程</p>
-<p>案例一：显示passwd每行行号，列数与对应行用户名</p>
-<p><code>awk -F &#39;:&#39; &#39;BEGIN{print &quot;Line Clo User&quot;}{print NR,NF,$1}END{print&quot;--------&quot;FILENAME&quot;-----------&quot;}&#39; passwd</code></p>
-<p><strong>awk处理过程</strong></p>
-<p>案例一：统计当前文件夹下的文件/文件夹占用的大小</p>
-<p><code>awk &#39;BEGIN{siz=0}{size+=5}END{print &quot;size is &quot; size/1024/1024&quot;M&quot;}&#39;</code></p>
-<p>案例二：统计passwd账户总人数,统计UID大于100的用户名</p>
-<p><code>awk -F &#39;:&#39; &#39;BEGIN{count=0}$1!~/^$/{count++}END{print &quot; count = &quot; count}&#39; passwd</code></p>
-<p><code>awk -F &#39;:&#39; &#39;BEGIN{count=0}{if ($3&gt;100) name[count++]=$1}END{for (i=0;i&lt;count;i++) print i,name[i]}&#39; passwd</code></p>
-<p>案例三：统计netstat -anp状态下为LISTEN和CONNECTED的连接数量</p>
-<p><code>netstat -anp | awk &#39;$6~/CONNECTED|LISTEN/{sum[$6]++}END{for (i in sum) print i,sum[i]}&#39;</code></p>
-<p>输出：</p>
-<p>LISTEN 13<br>CONNECTED 406</p>
-<p><strong>awk VS  sed</strong></p>
-<ul>
-<li>awk和sed都可以处理文本</li>
-<li>awk侧重于复杂逻辑处理</li>
-<li>sed侧重与正则处理</li>
-</ul>
-<p><strong>awk总结</strong></p>
-<p><img src="C:\Users\VS-YY\AppData\Roaming\Typora\typora-user-images\1554038827247.png" alt="1554038827247"></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><strong>正则</strong></p>
-<p>如何表示字符-&gt;如何组成表达式</p>
-<p>正则表达式可能不能一次写好，要多次试错</p>
-<p><strong>sed</strong></p>
-<p>理解行处理原理</p>
-<p>格式！！</p>
-<p>基本的行处理命令</p>
-<p>替换一定要学会</p>
-<p>了解高级命令</p>
-<p><strong>awk</strong></p>
-<p>记住常用的内嵌参数</p>
-<p>格式要记住（BEGIN+END）</p>
-<p>学会用逻辑与函数做更多的应用</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/02/grep、sed、awk/" data-id="cju43bklv000434ua5ab7503d" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-ying" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/04/01/hello-ying/" class="article-date">
-  <time datetime="2019-04-01T15:49:36.000Z" itemprop="datePublished">2019-04-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/01/hello-ying/">hello,ying</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="加油！"><a href="#加油！" class="headerlink" title="加油！"></a>加油！</h2>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/01/hello-ying/" data-id="cju43bkkk000134ua7guvt4t7" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/test/">test</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/04/01/hello-world/" class="article-date">
-  <time datetime="2019-04-01T15:30:22.894Z" itemprop="datePublished">2019-04-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/01/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/01/hello-world/" data-id="cju43bkji000034uafd78swbj" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-剑指offer" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-剑指offer" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/03/21/剑指offer/" class="article-date">
   <time datetime="2019-03-21T00:41:26.304Z" itemprop="datePublished">2019-03-21</time>
@@ -494,11 +106,23 @@
     </footer>
   </div>
   
-</article>
-
+    
+<nav id="article-nav">
+  
+    <a href="/2019/04/01/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+</nav>
 
   
-
+</article>
 
 </section>
         
